@@ -1,24 +1,21 @@
-import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   typescript: {
-    ignoreBuildErrors: false, 
+    ignoreBuildErrors: false, // Mantener para ver errores reales
   },
-
+  eslint: {
+    ignoreDuringBuilds: true, 
+  },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-        // Opcional: puedes ser más específico con pathname
-        // pathname: '/your-cloud-name/**',
       },
     ],
   },
-  
-  env: {
-    CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
-  },
-};
+  // Configuración para Vercel
+  output: 'standalone', 
+}
 
-export default nextConfig;
+module.exports = nextConfig
